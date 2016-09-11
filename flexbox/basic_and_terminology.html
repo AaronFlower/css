@@ -48,7 +48,19 @@
 		.container.flex-space-around {
 		  justify-content: space-around;
 		}
-
+		/* use Flex grow */
+		.container.flex-grow {
+		  text-align: center;
+		}
+		.container.flex-grow > .item01{
+		  flex-grow: 3;
+		}
+		.container.flex-grow > .item02{
+		  flex-grow: 2;
+		}
+		.container.flex-grow > .item03{
+		  flex-grow: 1;
+		}
 
 		/* Use flex to center elements responsisely*/
 		.flex-container {
@@ -132,6 +144,13 @@
 	</div>
 	<h5>Flex justify-content(flex-space-around)</h5>
 	<div class="container flex-space-around">
+	  <span class="item item01">01</span>
+	  <span class="item item02">02</span>
+	  <span class="item item03">03</span>
+	</div>
+	
+	<h3>Use Flex grow </h3>
+	<div class="container flex-grow">
 	  <span class="item item01">01</span>
 	  <span class="item item02">02</span>
 	  <span class="item item03">03</span>
