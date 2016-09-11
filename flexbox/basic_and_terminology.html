@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Flexbox Basics &amp; Terminology</title>
+	<style>
+		.container {
+		  background: blue;
+		  display: flex;
+		}
+
+		.item {
+		  background: cornsilk;
+		  padding: 5px;
+		  margin: 5px;
+		  border: 1px solid red; 
+		}
+
+		.item01 {
+		  order: 1;
+		}
+		.item02 {
+		  order: 2;
+		}
+
+		.container.row-reverse {
+		  flex-direction: row-reverse;
+		}
+		.container.column {
+		  flex-direction: column;
+		}
+		.container.column-reverse {
+		  flex-direction: column-reverse;
+		}
+
+		.container.flex-start {
+		  justify-content: flex-start;
+		}
+		.container.flex-end {
+		  justify-content: flex-end;
+		}
+		.container.flex-center {
+		  justify-content: center;
+		}
+		.container.flex-space-between {
+		  justify-content: space-between;
+		}
+		.container.flex-space-around {
+		  justify-content: space-around;
+		}
+
+
+		/* Use flex to center elements responsisely*/
+		.flex-container {
+		  padding: 0;
+		  margin: 0;
+		  list-style: none;
+		  display: flex;
+		  flex-flow: row wrap;
+		  justify-content: space-around;
+		}
+
+		.flex-item {
+		  background: tomato;
+		  padding: 5px;
+		  width: 100px;
+		  height: 75px;
+		  margin-top: 10px;
+		  line-height: 75px;
+		  color: white;
+		  font-weight: bold;
+		  font-size: 3em;
+		  text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<h5>Flex default</h5>
+	<div class="container">
+	  <span class="item">01</span>
+	  <span class="item">02</span>
+	  <span class="item">03</span>
+	</div>
+	<h5>Flex order change</h5>
+	<div class="container">
+	  <span class="item item01">01</span>
+	  <span class="item item02">02</span>
+	  <span class="item item03">03</span>
+	</div>
+	<h5>Flex-direction change (row-reverse)</h5>
+	<div class="container row-reverse">
+	  <span class="item item01">01 </span>
+	  <span class="item item02">02 </span>
+	  <span class="item item03">03 </span>
+	</div>
+	<h5>Flex-direction change (coclumn)</h5>
+	<div class="container column">
+	  <span class="item item01">01 </span>
+	  <span class="item item02">02 </span>
+	  <span class="item item03">03 </span>
+	</div>
+	<h5>Flex-direction change (column-reverse)</h5>
+	<div class="container column-reverse">
+	  <span class="item item01">01</span>
+	  <span class="item item02">02</span>
+	  <span class="item item03">03</span>
+	</div>
+	<h4>Flex justify-content</h4>
+	<h5>Flex justify-content(flex-start)</h5>
+	<div class="container flex-start">
+	  <span class="item item01">01</span>
+	  <span class="item item02">02</span>
+	  <span class="item item03">03</span>
+	</div>
+	<h5>Flex justify-content(flex-end)</h5>
+	<div class="container flex-end">
+	  <span class="item item01">01</span>
+	  <span class="item item02">02</span>
+	  <span class="item item03">03</span>
+	</div>
+	<h5>Flex justify-content(flex-center)</h5>
+	<div class="container flex-center">
+	  <span class="item item01">01</span>
+	  <span class="item item02">02</span>
+	  <span class="item item03">03</span>
+	</div>
+	<h5>Flex justify-content(flex-space-between)</h5>
+	<div class="container flex-space-between">
+	  <span class="item item01">01</span>
+	  <span class="item item02">02</span>
+	  <span class="item item03">03</span>
+	</div>
+	<h5>Flex justify-content(flex-space-around)</h5>
+	<div class="container flex-space-around">
+	  <span class="item item01">01</span>
+	  <span class="item item02">02</span>
+	  <span class="item item03">03</span>
+	</div>
+
+	<h3>Use Flex to center elements </h3>
+	<ul class="flex-container">
+	  <li class="flex-item">1</li>
+	  <li class="flex-item">2</li>
+	  <li class="flex-item">3</li>
+	  <li class="flex-item">4</li>
+	  <li class="flex-item">5</li>
+	  <li class="flex-item">6</li>
+	</ul>
+</body>
+</html>
