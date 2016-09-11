@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Media Query</title>
+	<style>
+		body {
+		  margin: 0;
+		  padding: 0;
+		}
+		div {
+		  padding: 10px;
+		}
+		/* default */
+		.container {
+		  margin: auto;
+		  height: 200px;
+		  background: tomato;
+		  width: 90%;
+		}
+		/*  if the viewport is 500 pixels wide or wider */
+		@media screen and (min-width: 500px) {
+		  .container {
+		    width: 80%;
+		    background: cornsilk;
+		  }
+		}
+		/*  if the viewport is 800 pixels wide or wider */
+		@media screen and (min-width: 800px) {
+		  .container {
+		    width: 60%;
+		    background: deepskyblue;
+		  }
+		}
+
+		.container2 {
+		  margin: auto;
+		  height: 200px;
+		  background: cornsilk;
+		  width: 90%;
+		}
+		/*  if the viewport is 800 pixels narrow or narrower */
+		@media screen and (max-width: 800px) {
+		  .container2 {
+		    width: 60%;
+		    background: deepskyblue;
+		  }
+		}
+		@media (max-width: 800px) {
+		  .container2 {
+		    border: 2px dashed black;
+		  }
+		}
+		/*  if the viewport is 500 pixels narrow or narrower */
+		@media screen and (max-width: 500px) {
+		  .container2 {
+		    width: 80%;
+		    background: tomato;
+		  }
+		}
+
+		@media (max-width: 500px) {
+		  .container2 {
+		    border: 2px dashed red;
+		  }
+		}
+	</style>
+</head>
+<body>
+	<h3 id="text-holder"></h3>
+	<div class="container">
+		Notice to comprehend the min-width and max-width meaning.
+	</div>
+	<div class="container2">
+	</div>
+	
+	<script>
+		setInterval(function () {
+			let $holder = document.getElementById('text-holder')
+			// let rect = document.body.getBoundingClientRect()
+			$holder.innerHTML = `width: ${document.body.clientWidth}, height: ${document.body.clientHeight + document.body.scrollTop}`
+		}, 100)
+	</script>
+</body>
+</html>
