@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>:active Pseudo Element LOVE HATE</title>
+	<style>
+		body {
+			margin: auto;
+			width: 50%;
+		}
+		@media screen and (min-width: 600px) {
+			body {
+				width: 80%;
+				background: cornsilk;
+			}
+		}
+		.demo-container {
+			position: relative;
+			border: 10px solid white;
+			background: black;
+			color: white;
+			width: 230px;
+			height: 150px;
+			margin: 10px;
+		}
+		.demo-container-active:active {
+			background: deepskyblue;
+		}
+		.main a {
+			position: absolute;
+			color: #FFF;
+		}
+		.main a:active {
+			top: 2px;
+			color: purple;
+		}
+		input:active {
+			background: tomato;
+		}
+		
+		.lvha-demo {
+			width: 200px;
+			height: 120px;
+			background: #F6F55A;
+		}
+		/**
+		 * Only  links have 'visited' pseudo element.
+		 */
+		.lvha-demo:visited {
+			background: #F62C31;
+		}
+		.lvha-demo:hover {
+			background: #F6C3E8;
+		}
+		.lvha-demo:active {
+			background: #0B2EF6;
+		}
+	</style>
+</head>
+<body>
+	<header>LOVE HEAT</header>		
+	<section>
+		<h4>:active</h4>
+		<article class="main">
+			<p>
+				The :active pseudo selector changes the appearance of a link while it is being activated (being clicked on or otherwise activated). It's usually only seen for a split second, and provides visual feedback that the element was indeed clicked. It's most typically used on anchor links 
+			</p>
+			<div class="demo-container">
+				<a href="#">Click Me</a>
+			</div>		
+			<div class="demo-container demo-container-active">
+				<a href="#">Click Me</a>
+				<p>Click on the container</p>
+			</div>
+			<div class="demo-form">
+				<label>Name: <input type="text"></label>
+			</div>
+		</article>
+	</section>
+	<section>
+		<h4>All States "LOVE HEAT"</h4>
+		<article>
+			<p>
+				It is best practice to cover all of the "states", particularly for links. An easy way to do that is "LOVE HATE"
+			</p>
+			<p>The sequence, especially for links, is:</p>
+			<div class="lvha-demo">
+				<ol>
+					<li>:link</li>
+					<li>:visited</li>
+					<li>:hover</li>
+					<li>:active</li>
+				</ol>
+			</div>
+		</article>
+	</section>
+	<footer>
+		<section>
+			<p>References: <a href="https://css-tricks.com/almanac/selectors/a/active/" target="_blank">Css Almanac:active</a></p>
+		</section>
+	</footer>
+</body>
+</html>
