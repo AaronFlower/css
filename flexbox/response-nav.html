@@ -15,7 +15,9 @@
 			/* This aligns items to the end line on main-axis */
 			justify-content: flex-end;
 		}
-
+		.navigation li.active {
+			order: -1;
+		}
 		.navigation a {
 			text-decoration: none;
 			display: block;
@@ -59,11 +61,20 @@
 <body>
 	<nav>
 		<ul class="navigation">
-			<li><a href="#">Home</a></li>
+			<li class="active"><a href="#">Home</a></li>
 			<li><a href="#">About</a></li>
 			<li><a href="#">Products</a></li>
 			<li><a href="#">Contact</a></li>
 		</ul>
 	</nav>
+	<script>
+		let lis = Array.from(document.getElementsByTagName('li'))
+		lis.forEach($li => {
+			$li.addEventListener('click', () => {
+				document.querySelector('.active').className = ''
+				$li.className = 'active'
+			})
+		})
+	</script>
 </body>
 </html>
