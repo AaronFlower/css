@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Remove ScrollBar Width</title>
+	<style>
+		div.container , div.outer-container {
+			height: 500px;
+			width: 800px;
+		}
+		div.outer-container {
+			border: 5px solid purple;
+			position: relative;
+			overflow: hidden;
+		}
+		div.inner-container {
+			position: absolute;
+			left: 0;
+			overflow-x: hidden;
+			overflow-y: scroll;
+		}
+		.inner-container::-webkit-scrollbar {
+			display: none;
+		}
+		img.image-nail {
+			max-height: 150px;
+			max-width: 320px;
+			height: auto;
+			widows: auto;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="outer-container">
+		<div class="inner-container">
+			<div class="container">
+				<img class="image-nail" src="../images/app_new_primary_info.jpg">
+				<img class="image-nail" src="../images/app_new_primary_info.jpg">
+				<img class="image-nail" src="../images/app_new_primary_info.jpg">
+				<img class="image-nail" src="../images/app_new_primary_info.jpg">
+				<img class="image-nail" src="../images/app_new_primary_info.jpg">
+				<img class="image-nail" src="../images/app_new_primary_info.jpg">
+				<img class="image-nail" src="../images/app_new_primary_info.jpg">
+				<img class="image-nail" src="../images/app_new_primary_info.jpg">
+				<img class="image-nail" src="../images/app_new_primary_info.jpg">
+				<img class="image-nail" src="../images/app_new_primary_info.jpg">
+				<img class="image-nail" src="../images/app_new_primary_info.jpg">
+				<img class="image-nail" src="../images/app_new_primary_info.jpg">
+				<img class="image-nail" src="../images/app_new_primary_info.jpg">
+				<img class="image-nail" src="../images/app_new_primary_info.jpg">
+				<img class="image-nail" src="../images/app_new_primary_info.jpg">
+				<img class="image-nail" src="../images/app_new_primary_info.jpg">
+				<img class="image-nail" src="../images/app_new_primary_info.jpg">
+				<img class="image-nail" src="../images/app_new_primary_info.jpg">
+				<img class="image-nail" src="../images/app_new_primary_info.jpg">
+				<img class="image-nail" src="../images/app_new_primary_info.jpg">
+				<img class="image-nail" src="../images/app_new_primary_info.jpg">
+				<img class="image-nail" src="../images/app_new_primary_info.jpg">
+				<img class="image-nail" src="../images/app_new_primary_info.jpg">
+				<img class="image-nail" src="../images/app_new_primary_info.jpg">
+				<img class="image-nail" src="../images/app_new_primary_info.jpg">
+				<img class="image-nail" src="../images/app_new_primary_info.jpg">
+			</div>
+		</div>
+	</div>
+	<footer>
+		<section>
+			<p>
+				References: <a href="https://blogs.msdn.microsoft.com/kurlak/2013/11/03/hiding-vertical-scrollbars-with-pure-css-in-chrome-ie-6-firefox-opera-and-safari/">Remove ScrollBar Width</a>
+			</p>
+		</section>
+	</footer>
+</body>
+</html>

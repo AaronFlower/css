@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>How to make absolute positioned elements overlap their overflow hidden parent</title>
+	<style>
+		body {
+			width: 60%;
+			margin: auto;
+		}
+		.parent {
+			position: relative;
+			width: 230px;
+			height: 150px;
+			background: cornsilk;
+			border: 1px solid red;
+			margin-bottom: 60px;
+		}
+		.child {
+			position: absolute;
+			width: 50px;
+			height: 50px;
+			left: -10px;
+			top: -20px;
+			background: deepskyblue;
+		}
+		.example01.parent {
+			overflow: initial;
+		}
+		.example02.parent {
+			overflow: hidden;
+		}
+		.grand-parent {
+			position: relative;
+		}
+		.example03.parent {
+			overflow: hidden;
+			position: initial;
+		}
+	</style>
+</head>
+<body>
+	<h4>Parent Overflow none and Child element Overlapped</h4>
+	<div class="exapmle01 parent">
+		<p>
+			For help when upgrading jQuery, please see the upgrade guide most relevant to your version. We also recommend using the jQuery Migrate plugin.Compressed and uncompressed copies of jQuery files are available. The uncompressed file is best used during development or debugging; 
+		</p>
+		<div class="child"></div>
+	</div>	
+	<h4>Parent Overflow hidden and Child element Overlapped</h4>
+	<div class="example02 parent">
+		<p>
+			For help when upgrading jQuery, please see the upgrade guide most relevant to your version. We also recommend using the jQuery Migrate plugin.Compressed and uncompressed copies of jQuery files are available. The uncompressed file is best used during development or debugging; the compressed file saves bandwidth and improves performance in production.
+		</p>
+		<div class="child"></div>
+	</div>
+	<h4>Tricks: add grand-parent</h4>
+	<div class="grand-parent">
+		<div class="example03 parent">
+			<p>
+				For help when upgrading jQuery, please see the upgrade guide most relevant to your version. We also recommend using the jQuery Migrate plugin.Compressed and uncompressed copies of jQuery files are available. The uncompressed file is best used during development or debugging; the compressed file saves bandwidth and improves performance in production.
+			</p>
+		</div>
+		<div class="child"></div>
+	</div>
+</body>
+</html>

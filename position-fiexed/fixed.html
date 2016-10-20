@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Fixed Picture</title>
+	<style>
+		img.fixed-image {
+			/*position: fixed;*/
+			width: auto;
+			height: auto;
+			transition: all 0.5s;
+		}
+		img.image-nail-zoomin {
+			position: absolute;
+			max-width: 200px;
+			max-height: 120px;
+			top: 70%;
+			left: 80%;
+			margin-left: -100px;
+		}
+		img.image-nail-zoomout {
+			position: fixed;
+			max-width: 600px;
+			max-height: 500px;
+			top: 50%;
+			left: 50%;
+			margin-left: -300px;
+			margin-top: -250px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<img src="../images/app_new_primary_info.jpg" alt="" class="fixed-image image-nail-zoomin">
+	</div>
+
+	<script>
+		let $i = document.querySelector('img')
+		console.log('...', $i)
+		$i.addEventListener('click', function () {
+			let className = $i.className 
+			console.log('className before:', className)
+			if (className.indexOf('image-nail-zoomin') !== -1) {
+				$i.className = 'fixed-image image-nail-zoomout'
+			} else {
+				$i.className = 'fixed-image image-nail-zoomin'
+				// $i.className = $i.className.replace(/image\-nail\-zoomout/g, 'image-nail-zoomin')
+			}
+			console.log('className after:', className)
+		})
+	</script>
+</body>
+</html>
