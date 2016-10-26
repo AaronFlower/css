@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>White-space</title>
+	<style>
+		body {
+			width: 60%;
+			margin: auto;
+			background: cornsilk;
+		}
+		.text-container	{
+			background: deepskyblue;
+			width: 300px;
+			border: 1px solid red;
+			padding: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h3>White space</h3>
+	<dl>
+		<dt>white-space</dt>
+		<dd>The white-space property is used to describe how whitespace inside the element is handled.</dd>
+	</dl>
+	<p>
+		<h4>Usage:</h4> 
+		<ol>
+			<li>Control only one-line display.(especially in contenteditable div)</li>
+		</ol>
+		<h4>Values:</h4>
+		<dl>
+			<dt>normal</dt>
+			<dd>
+				Sequences of whitespace are collapsed. Newline characters in the source are handled as other whitespace. 
+				Breaks lines as necessary to fill line boxes.
+			</dd>
+				<dt>nowrap</dt>
+				<dd>Collapses whitespace as for normal, but suppresses line breaks (text wrapping) within text.</dd>
+			<dt>pre</dt>
+			<dd>Sequences of whitespace are preserved. Lines are only broken at newline characters in the source and at elements.</dd>
+			<dt>pre-wrap</dt>
+			<dd>Sequences of whitespace are preserved. Lines are broken at newline characters, at  and as necessary to fill line boxes.</dd>
+			<dt>pre-line</dt>
+			<dd>Sequences of whitespace are collapsed. Lines are broken at newline characters, at and as necessary to fill line boxes.</dd>
+		</dl>
+	</p>
+	<div class="demo-container">
+		<h4>Demo</h4>
+		<label>
+			{ 
+			white-space:
+			<select name="whitespace" id="white-space">
+				<option value="normal">normal</option>
+				<option value="nowrap">nowrap</option>
+				<option value="pre">pre</option>
+				<option value="pre-wrap">pre-wrap</option>
+				<option value="pre-line">pre-line</option>
+			</select>
+			}
+		</label>
+		<div class="text-container">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+			   
+	   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+	   
+	   Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+	   
+	   Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		</div>
+	</div>
+	<script>
+		let $select = document.getElementById('white-space')
+		let $container = document.querySelector('.text-container')
+		$select.addEventListener('change', function () {
+			let value = $select.value
+			$container.style.whiteSpace = value
+		})
+	</script>
+</body>
+</html>
