@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Css Navigation Prev, Next</title>
+	<style>
+		body {
+			margin: auto;
+			width: 60%;
+		}
+		.nav-btn {
+			display: inline-block;
+			width: 30px;
+			height: 30px;
+			border: 1px solid #C2CBD4;
+			border-radius: 50%;
+			position: relative;
+		}
+		.nav-btn:hover {
+			border-color: #1EC6A4;
+		}
+		.nav-btn.prev:before {
+			content: '';
+			border-width: 7px;
+			border-color: transparent #9099A6 transparent transparent;
+			border-style: solid;
+			width: 0;
+			height: 0;
+			position: absolute;
+			top: 28%;
+			left: 10%;
+		}
+		.nav-btn.prev:hover:before {
+			border-right-color: #1EC6A4;
+		}
+		.nav-btn.prev:after {
+			content: '';
+			border-width: 7px;
+			border-color: transparent white transparent transparent;
+			border-style: solid;
+			width: 0;
+			height: 0;
+			position: absolute;
+			top: 28%;
+			left: 15%;
+		}
+		.nav-btn.next:before {
+			content: '';
+			border-width: 7px;
+			border-color: transparent transparent transparent #9099A6;
+			border-style: solid;
+			width: 0;
+			height: 0;
+			position: absolute;
+			top: 28%;
+			right: 8%;
+		}
+		.nav-btn.next:hover:before {
+			border-left-color: #1EC6A4;
+		}
+		.nav-btn.next:after {
+			content: '';
+			border-width: 7px;
+			border-color: transparent transparent transparent white;
+			border-style: solid;
+			width: 0;
+			height: 0;
+			position: absolute;
+			top: 28%;
+			right: 13%;
+		}
+	</style>
+</head>
+<body>
+	<h2>Use :before, :after pseudo element to implement navigation button</h2>
+	<h3>Prev</h3>
+	<div class="nav-btn prev">
+	</div>
+	<h3>Next</h3>
+	<div class="nav-btn next">
+	</div>
+</body>
+</html>
