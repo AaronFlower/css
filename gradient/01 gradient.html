@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Gradient</title>
+	<style>
+		.container {
+			width: 150px;
+			height: 150px;
+			/*float: left;*/
+			border: 1px solid #ccc;
+			margin: 5px;
+		}
+		.linear-list {
+			display: flex;
+		}
+		.container.c01 {
+			background: linear-gradient(to right, white, blue);
+		}
+		.container.c02 {
+			background: linear-gradient(to bottom, red, blue);
+		}
+		.container.c03 {
+			background: linear-gradient(90deg, red 50%, white 50%);
+		}		
+		.container.c04 {
+			background: linear-gradient(-90deg, red 50%, white 50%);
+		}
+		.container.c05 {
+			background: linear-gradient(90deg, white 50%, cornsilk 50%);
+		}
+		.container.c06 {
+			width: 260px;
+			height: 100px;
+			background: linear-gradient(135deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1)), url('../images/linegradient.png') center center;
+		}
+		
+		.container.lg01	{
+			background: repeating-linear-gradient(45deg, red, red 5px, white 5px, white 10px);
+		}		
+		.container.lg02	{
+			height: 20px;
+			background: repeating-linear-gradient(45deg, red, red 5px, white 5px, white 10px);
+		}		
+
+		/**
+		 * @keyframes
+		 * 
+		 */
+		@keyframes foo 
+		{
+			0% {width: 20px;}
+			100% {width: 200px;}
+		}
+		.container.lg03	{
+			height: 20px;
+			background: repeating-linear-gradient(-45deg, blue , blue 5px, white 5px, white 10px);
+			animation: foo 4s linear 0s infinite alternate; /* animation-name time linear time infinite alternate */
+		}
+		.container.lg04 {
+			height: 20px;
+			border-radius: 15px;
+/*			background: #7aff32;
+			background: linear-gradient(to bottom, #7aff32, #54a6e5);*/
+		}
+		@keyframes progress 
+		{
+			to {background-position: 30px 0}
+		}
+
+		.container.lg04 {
+			background-image: repeating-linear-gradient(-45deg, blue , blue 5px, white 5px, white 10px);
+			/*background-position: 30px 0;*/
+			animation: progress 1s linear 0s infinite;
+			background-repeat: repeat-x;
+			background-size: 30px 30px;
+	}
+
+		.container.r01 {
+			background: radial-gradient(red, yellow, blue);
+		}		
+		.container.r02 {
+			background: radial-gradient(red 5%, yellow 25%, #1E90FF 50%);
+		}
+
+
+	</style>
+</head>
+<body>
+	<h3>1. background: linear-gradient</h3>
+	<div class="linear-list">
+		<div class="container c01">
+		</div>
+		<div class="container c02">
+		</div>
+		<div class="container c03">
+		</div>	
+		<div class="container c04">
+		</div>
+		<div class="container c05">
+		</div>
+		<div class="container c06">
+		</div>
+	</div>
+	<h3>2. background: repeating-linear-gradient</h3>
+	<h4>The consequence is that an end color of a gradient always coincide with a start color. If both are not identical, this will result in a sharp transition.</h4>
+	<div class="linear-list">
+		<div class="container lg01"></div>
+		<div class="container lg02"></div>
+		<div class="container lg03"></div>
+	</div>
+	<div class="linear-list">
+		<div class="container lg04"></div>
+	</div>
+	<h3>3. background: radial-gradient</h3>
+	<div class="linear-list">
+		<div class="container r01"></div>
+		<div class="container r02"></div>
+		<div class="container r03"></div>
+		<div class="container r04"></div>
+		<div class="container r05"></div>
+		<div class="container r06"></div>
+	</div>
+	<h3>Delete Icon</h3>
+	<div>
+		
+	</div>
+</body>
+</html>
