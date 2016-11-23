@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Animation Image FadeIn</title>
+	<style>
+		body {
+			margin: auto;
+			width: 60%;
+		}
+		@keyframes fadein {
+			from { opacity: 0 }
+			to { opacity: 1 }
+		}
+		.css-fadein {
+			animation: fadein 2s;
+		}
+		.foo {
+			width: 100px;
+			height: 100px;
+			background: cornsilk;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<img class="css-fadein" src="../../images/app_new_primary_info.jpg" alt="">
+	</div>
+	<p class="css-fadein">Crazy....</p>
+	<div class="foo css-fadein">
+	</div>
+</body>
+</html>

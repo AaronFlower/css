@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Transition</title>
+	<style>
+		body {
+			width: 80%;
+			margin: auto;
+		}
+		.rect {
+			height: 150px;
+			width: 150px;
+			line-height: 150px;
+			text-align: center;
+			color: #99E6D5;
+			background-color: red;
+			transition: background 0.3s ease;
+		}
+		.rect:hover {
+			background-color: #FC0BC3;
+		}
+
+		.upload	{
+			height: 150px;
+			width: 150px;
+			background-color: #000;
+			border-radius: 5px;
+			border: 1px solid  #FFF;
+
+			position: relative;
+		}
+		.upload-progress-container {
+			position: absolute;
+			height: 20px;
+			width: 110px;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+		}
+		.upload-progress-bar {
+			width: 10%;
+			height: 100%;
+			background: rgba(255, 255, 255, 0.8);
+			border-radius: 3px;
+			transition: width 300ms ease-in-out;
+			transition: opacity 500ms ease-in-out;
+		}
+	</style>
+</head>
+<body>
+	<h3>Transition Background</h3>
+	<div class="container">
+		<div class="rect">
+			Hover Me!
+		</div>
+	</div>
+	<h3>Upload progress bar!</h3>
+	<div class="container">
+		<button id="start">Start</button>
+		<div class="upload">
+			<div class="upload-progress-container">
+				<div class="upload-progress-bar">
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		document.getElementById('start').addEventListener('click', function () {
+			document.querySelectorAll('.upload-progress-bar').forEach(function (ele) {
+				console.log(getComputedStyle(ele))
+				ele.style.width = "50%"
+				setTimeout(function () {
+					ele.style.width = "100%"
+					setTimeout(function () {
+						ele.style.opacity = '0'
+						setTimeout(function () {
+							ele.style.width = '0'
+						}, 1000)
+					}, 1000)
+				}, 1000)
+			})
+		})
+	</script>
+</body>
+</html>
