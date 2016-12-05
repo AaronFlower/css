@@ -12,15 +12,123 @@
 			box-shadow: 0 1px 5px grey;
 			color: white;
 			text-shadow: 0 -1px 1px #335166;
-			font-size: 10px;
+			font-size: 20px;
 			line-height: 30px;
+		}
+		.code-container {
+			display: inline-block;
+			background: cornsilk;
+			padding: 10px;
+			margin: 10px;
+		}
+		.code-arrow	{
+			display: inline-block;
+	    vertical-align: 150%;
 		}
 	</style>
 </head>
 <body>
 	<h1>DRY, Don't Repeat Yourself</h1>
 	<h2>尽量减少代码重复</h2>
-	<button class="button">Yes!</button>
-	<span class="button">Yes!</sapn>
+	<span class="button">Yes!</span>
+	<div class="row">
+		<div class="code-container">
+		<code>
+			<pre>
+.button {
+	padding: 6px 16px;
+	border: 1px solid #446d88;
+	background: #58a linear-gradient(#77a0bb, #58a);
+	border-radius: 4px;
+	box-shadow: 0 1px 5px grey;
+	color: white;
+	text-shadow: 0 -1px 1px #335166;
+	font-size: 20px;
+	line-height: 30px;
+}
+			</pre>
+		</code>
+		</div>
+	</div>
+	<h3>
+		尽量减少改动时要编辑的地方
+	</h3>
+	<p> 1.当某些值相互依赖时，就应该把他们的依赖关系用代码表现出来。</p>
+	<div class="row">
+		<div class="code-container">
+			<pre>
+.button {
+	font-size: 20px;
+	line-height: 30px;
+}
+			</pre>
+		</div>
+		<div class="code-arrow">
+			-->>
+		</div>
+		<div class="code-container">
+			<pre>
+.button {
+	font-size: 20px;
+	line-height: 1.5;
+}
+			</pre>
+		</div>
+	</div>
+	<p> 为什么还要把字号定位绝对长度那？</p>
+	<div class="row">
+		<div class="code-container">
+			<pre>
+.button {
+	font-size: 20px;
+	line-height: 1.5;
+}
+			</pre>
+		</div>
+		<div class="code-arrow">
+			-->>
+		</div>
+		<div class="code-container">
+			<pre>
+.button {
+	font-size: 125%; /* 假设父级字号是16px;*/
+	line-height: 1.5;
+}
+			</pre>
+		</div>
+	</div>
+	<p>改变字号时，按钮尺寸随之变化，但是并不协调，不有随之缩放。改成<code>em</code>单位，使得依赖字号随之缩放。</p>
+	<p><strong>注意：</strong>审视下，border 的宽度不应该随之变化。</p>
+	<div class="row">
+		<div class="code-container">
+			<pre>
+.button {
+	padding: 6px 16px;
+	border: 1px solid #446d88;
+	border-radius: 4px;
+	box-shadow: 0 1px 5px grey;
+	text-shadow: 0 -1px 1px #335166;
+	font-size: 20px;
+	line-height: 30px;
+}
+			</pre>
+		</div>	
+		<div class="code-arrow">
+			-->>
+		</div>	
+		<div class="code-container">
+			<pre>
+.button {
+	padding: 0.3empx 0.8em;
+	border: 1px solid #446d88;
+	border-radius: 0.2em;
+	box-shadow: 0 05em .25em grey;
+	text-shadow: 0 -.05em .05em #335166;
+	font-size: 20px;
+	line-height: 1.5;	
+}
+			</pre>
+		</div>
+	</div>
 </body>
 </html>
