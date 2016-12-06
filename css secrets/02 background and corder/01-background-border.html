@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Backgroun and Border</title>
+	<style>
+		/**
+		 * transparent container
+		 */
+		.transparent-container {
+			position: relative;
+			width: 200px;
+			height: 120px;
+			background: #ccc;
+			margin: 10px;
+		}
+		.transparent-container .inner {
+			position: absolute;
+			width: 80%;
+			height: 70%;
+			margin: auto;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+
+			background: white;
+			border: 10px solid hsla(0, 0%, 100%, .5);
+			/*background-clip: padding-box;*/
+		}
+		.transparent-container .inner.dashed {
+			border: 10px dashed green;
+		}
+		.transparent-container .inner.clip {
+			border: 10px solid hsla(0, 0%, 100%, .5);
+			background-clip: padding-box;
+		}
+
+
+	</style>
+</head>
+<body>
+	<h1>Transparent Background</h1>
+	<ol>
+		<li>知识点： RGBA/HSLA 颜色</li>
+		<li>CSS 背景与边框</li>
+	</ol>
+	<div class="transparent-container">
+		<div class="inner">
+			Can I haz semi-transparent Borders?
+			No effects!
+		</div>
+	</div>	
+	<div class="transparent-container">
+		<div class="inner dashed">
+			Can I haz semi-transparent Borders? 
+			Dashed!
+		</div>
+	</div>
+	<div class="transparent-container">
+		<div class="inner clip">
+			Can I haz semi-transparent Borders? 
+			Apply background-clip.
+		</div>
+	</div>
+</body>
+</html>

@@ -4,6 +4,19 @@
 	<meta charset="UTF-8">
 	<title>CSS Coding Tips</title>
 	<style>
+			.code-container {
+				display: inline-block;
+				background: cornsilk;
+				padding: 10px;
+				margin: 10px;
+			}
+			.code-arrow	{
+				display: inline-block;
+		    vertical-align: 150%;
+			}
+		/**
+		 * primitive button
+		 */
 		.button {
 			padding: 6px 16px;
 			border: 1px solid #446d88;
@@ -15,15 +28,67 @@
 			font-size: 20px;
 			line-height: 30px;
 		}
-		.code-container {
-			display: inline-block;
-			background: cornsilk;
-			padding: 10px;
-			margin: 10px;
+		.button.confirm {
+			background-color: #c00;
 		}
-		.code-arrow	{
-			display: inline-block;
-	    vertical-align: 150%;
+		.button.cancel {
+			background-color: #6b0;
+		}
+		/**
+		 * enhanced button
+		 */
+		.enhanced-button {
+			padding: 0.3em 0.8em;
+			border: 1px solid rgba(0, 0, 0, .1);
+			background: #58a linear-gradient(hsla(0, 0%, 100%, .2), transparent);
+			border-radius: .2em;
+			box-shadow: 0 .05em .25em rgba(0, 0, 0, .5);
+			color: white;
+			text-shadow: 0 -.05em .05em rgba(0, 0, 0, .5);
+			font-size: 125%;
+			line-height: 1.5;
+		}
+		.enhanced-button.confirm {
+			background-color: #c00;
+		}
+		.enhanced-button.cancel {
+			background-color: #6b0;
+		}
+		/**
+		 * color-container 
+		 */
+		.color-container {
+			width: 300px;
+			height: 120px;
+		}
+		.color-container.red {
+			color: red;
+		}
+		.color-container.blue {
+			color: blue;
+		}
+		.color-container hr {
+			background: currentColor;
+			height: 0.5em;
+		}
+
+		/**
+		 * inherit
+		 */
+		.inherit-container {
+			color: green;
+			border: 1px solid green
+		}
+		.inherit-container a {
+			color: green;
+		}
+		.inherit-container .inner {
+			color: tomato;
+			border: 1px solid tomato;
+		} 
+		.inherit-container .inner a.inherit-link {
+			/* 而不是： color: tomato; */
+			color: inherit;
 		}
 	</style>
 </head>
@@ -97,6 +162,7 @@
 			</pre>
 		</div>
 	</div>
+	<p>2. 关于缩放。</p>
 	<p>改变字号时，按钮尺寸随之变化，但是并不协调，不有随之缩放。改成<code>em</code>单位，使得依赖字号随之缩放。</p>
 	<p><strong>注意：</strong>审视下，border 的宽度不应该随之变化。</p>
 	<div class="row">
@@ -119,7 +185,7 @@
 		<div class="code-container">
 			<pre>
 .button {
-	padding: 0.3empx 0.8em;
+	padding: 0.3em 0.8em;
 	border: 1px solid #446d88;
 	border-radius: 0.2em;
 	box-shadow: 0 05em .25em grey;
