@@ -4,8 +4,16 @@
 	<meta charset="UTF-8">
 	<title>Backgroun and Border</title>
 	<style>
+	  /**
+	   * 00 container 
+	   */
+	  .container {
+	  	width: 200px;
+	  	height: 120px;
+	  	margin: 10px;
+	  }
 		/**
-		 * transparent container
+		 * 01 transparent container
 		 */
 		.transparent-container {
 			position: relative;
@@ -35,7 +43,24 @@
 			border: 10px solid hsla(0, 0%, 100%, .5);
 			background-clip: padding-box;
 		}
-
+		
+		/**
+		 * 02 multi-border-container
+		 */
+		.multi-border-container {
+			width: 200px;
+			height: 120px;
+			margin: 10px;
+			background: yellowgreen;
+			box-shadow: 0 0 0 10px #655,
+									0 0 0 15px deeppink;
+		}
+		.double-border-container {
+			background: hsla(325, 22%, 40%, .9);
+			border-radius: 10px;
+			outline: 1px dashed white;
+			outline-offset: -10px;
+		}
 
 	</style>
 </head>
@@ -45,6 +70,16 @@
 		<li>知识点： RGBA/HSLA 颜色</li>
 		<li>CSS 背景与边框</li>
 	</ol>
+	<p>
+		HSLA/HSVA/HSBA 是另外一种颜色的表示方式。
+		<ol>
+			<li>H, Hue, 色相, 取值 0~360 度。决定是一个什么颜色，是红(0度), 绿(120度), 蓝(240度) 还是其它颜色。 </li>
+			<li>S, Saturation, 饱合度/纯度, 取值 0~100%。 决定是 深，中，淡，浅。 </li>
+			<li>L/V/B, Lightness/Luminosity/Brightness/Value, 亮度，取值 0~100%。没有光是看不到颜色的。</li>
+			<li>A, Alpha, 透明度。</li>
+		</ol>
+		transparent, 是一个有带有 alpha 通道的最小值黑色。
+	</p>
 	<div class="transparent-container">
 		<div class="inner">
 			Can I haz semi-transparent Borders?
@@ -63,5 +98,16 @@
 			Apply background-clip.
 		</div>
 	</div>
+
+ <h1>多重边框</h1>
+ <p>
+ 	通过 <code>box-shadow </code>来实现多重边框， 通过 <code>outline</code> 来实现两层边框。
+ </p>
+ <h3>通过 <code>box-shadow </code>来实现多重边框</h3>
+ <div class="container multi-border-container">
+ </div>
+ <h3>通过 <code>outline</code> 来实现两层边框</h3>
+ <div class="container double-border-container">
+ </div>
 </body>
 </html>
