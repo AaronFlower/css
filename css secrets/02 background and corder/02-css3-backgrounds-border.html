@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Css3 Backgrounds And Border</title>
+	<style>
+		.container {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			width: 200px;
+			height: 200px;
+			margin: 20px;
+			padding: 20px;
+			border: 1px solid #654F5C;
+		}
+		/**
+		 * default backgrounds : transparent;
+		 */
+		.inner-container {
+			border: 1px solid red;
+			margin: 20px;
+			padding: 20px;
+		}
+		.bg-tan {
+			background: tan;
+		}
+		
+		/**
+		 * Layering multiple background images;
+		 */
+		.multiple-bg-images {
+			background-image: url(../../images/embroidery.jpg);
+			background-origin: border-box;
+			background-position: left;
+		}
+	</style>
+</head>
+<body>
+	<h2>Background 默认是 tansparent</h2>
+	<p>背景色默认是 transparent , 并且不能够被继承。但是仍然能在子元素中看到。这是因为默认的是<code>transparent</code>属性值。</p>
+	<p>
+			<code>
+				console.log(window.getComputedStyle( document.querySelector('.inner-container')).backgroundColor)
+			</code>
+		  得到是：	"rgba(0, 0, 0, 0)"
+	</p>
+	<div class="container bg-tan">
+		<div class="inner-container">
+			Background 默认是 transparent, 所以可以看到父元素的背景色。
+		</div>
+	</div>
+	<h3>Layering Multiplle Background Images</h3>
+	<p>
+		1. 在CSS 3 中一个盒子模型，可以有多个背景层。由 background-image 中的多个属性值用 逗号分隔组成。node 属性值也会创建一个背景层。
+	</p>
+	<p>
+		background-image, background-position, background-origin, background-repeat 的值都是由逗号分隔依次对应。
+	</p>
+	<p>
+		多个背景图片的展示顺序是：第一个图片最靠近用户，即是最上层，后面依次在下面。如果有 background-color 背景色的话，那么将会是在所有 background-images 的下面。
+	</p>
+	<div class="container multiple-bg-images">
+		
+	</div>
+</body>
+</html>
