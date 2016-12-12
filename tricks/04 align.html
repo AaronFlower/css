@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Css Align</title>
+	<style>
+		body {
+			width: 80%;
+			margin: auto;
+		}
+		.container {
+			width: 500px;
+			height: 150px;
+			background: hsla(0, 6%, 77%, 0.9);
+			border: 1px solid rgba(0, 0, 0, 0.1);
+		}
+		/**
+		 * 水平居中 inline 元素。
+		 */
+		.horizontally-inline {
+			text-align: center;
+			height: 100px;
+		}
+		/**
+		 * 水平居中, inline-block 元素。
+		 */
+		.horizontally-block .block{
+			background: hsla(0, 16%, 97%, 0.9);
+			border: 1px solid rgba(0, 0, 0, 0.1);
+			height: 50px;
+
+			margin: 10px auto;
+		}
+		.horizontally-block .block.fixed-width {
+			width: 150px;
+		}
+
+		/**
+		 * 多个 block 元素水平居中。
+		 */
+		.horizontally-multiple-blocks {
+			display: flex;
+			justify-content: center;
+		}
+		.horizontally-multiple-blocks .block-tilt{
+			width: 100px;
+			height: 30px;
+			background: hsla(0, 16%, 100%, 0.9);
+			border: 1px solid rgba(0, 0, 0, 0.2);
+			margin: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Css Align</h1>	
+	<h2>Horizontally</h2>
+	<h3>Inline Or Inline-* elements</h3>
+	<p>直接使用 <code>text-align:center</code> 来完成即可。</p>
+	<div class="container horizontally-inline">
+		<header>This Text is centerd</header>
+		<nav>
+			<a href="#">One</a>
+			<a href="#">Two</a>
+			<a href="#">Three</a>
+		</nav>
+	</div>
+	<h3> 单个 Block 元素</h3>
+	<p>对于Block 元素，可以设置 margin-left/right 为 auto; 即可， 并且设置一个宽度，如果不设置宽度的话，会平铺所有的空间。</p>
+	<div class="container horizontally-block">
+		<div class="block">
+			I'm a block Element;
+		</div>
+		<div class="block fixed-width">
+			I'm a block Element has fixed width;
+		</div>
+	</div>
+	<h3> 多个 Block 元素</h3>
+	<p>
+		对于多个 Block 元素们当然可以直接让这些 block 元素 inline-block 化，然后让元素 display: center; 就可以了。
+		但是我们还可以使用父元素 <code>display: flex; justify-content: center;</code>来完成。
+	</p>
+	<div class="container horizontally-multiple-blocks">
+		<div class="block-tilt">Block One</div>
+		<div class="block-tilt">Block Two</div>
+		<div class="block-tilt">Block Three</div>
+	</div>
+</body>
+</html>

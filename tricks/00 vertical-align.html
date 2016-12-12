@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title> 6 Vertical Align</title>
+	<style>
+		
+		body {
+			width: 65%;
+			margin: auto;
+		}
+		
+
+		.parent{
+			background-color: #ccc;
+		}
+		#child-1 {
+			line-height: 120px;
+			text-align: center;
+		}
+		.img-parent {
+			line-height: 300px;
+			text-align: center;
+		}
+		.img-parent img{
+			width: 230px;
+			height: 152px;
+			vertical-align: middle;
+		}
+
+		#parent-2 {
+			display: table;
+			height: 130px;
+			width: 140px;
+		}
+		#child-2 {
+			display: table-cell;
+			vertical-align: middle;
+			text-align: center;
+		}
+
+		/**
+		 * 方法3
+		 */
+		#parent-3 {
+			position: relative;
+			height: 200px;
+			width: 200px;
+			background: #ccc;
+		}
+
+		#child-3 {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			height: 30%;
+			width: 50%;
+			margin: -15% 0 0 -25%;
+			background-color: #fcfc00;
+		}
+
+		/**
+		 * 方法4
+		 */
+		#parent-4 {
+			position: relative;
+			width: 300px;
+			height: 300px;
+			background-color: #ccc;
+		}
+		#child-4 {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			left: 0;
+			margin: auto;
+
+			height: 30%;
+			width: 50%;	
+			background-color: #00fcfc;		
+		}
+	</style>
+</head>
+<body>
+<h1> 方法1 Line-height , Single Line</h1>
+<p>
+	单行文本，图片利用<code>line-height</code>来完成垂直居中。
+</p>
+<h3>html</h3>
+<pre>
+	<code>
+		&lt;div class="parent"&gt;
+			&lt;div class="child"&gt;Vertical Align Text&lt;/div&gt;
+		&lt;/div&gt;
+	</code>
+</pre>
+<h3>css</h3>
+<pre>
+	<code>
+		.child {
+			line-height: 200px;
+			text-align: center;
+		}
+	</code>
+</pre>
+<div class="parent" id="parent-1">
+	<div class="child" id="child-1">Hello Vertical Align</div>
+</div>
+
+<h3>Centering img with Line-height</h3>
+<p>
+	对于图片元素也可以就应用该方法，确保父元素的<code>line-height</code>比图片的高度要高。
+</p>
+<h3>html</h3>
+<pre>
+	<code>
+		&lt;div id="img-parent"&gt;
+			&lt;img src="230_152A.jpg" alt="" /&gt;
+		&lt;/div&gt;
+	</code>
+</pre>
+<h3>css</h3>
+<pre>
+	<code>
+		#img-parent {
+			line-height: 300px;
+			text-align: center;
+		}
+		#img-parent {
+			vertical-ailgn: middle;
+		}
+	</code>
+</pre>
+<div class="img-parent parent">
+	<img src="230_152A.jpg" alt="">
+</div>
+
+<div id="method-2">
+	<h1> 方法2： CSS Table Method</h1>
+	<p>通过设置元素的及子元素的<code>display</code>属性来实现。</p>
+	
+	<h3>html</h3>
+<pre>
+	<code>
+		&lt;div id="parent-2"&gt;
+			&lt;div id="child-2"&gt;Align-Content Here &lt;/div&gt;
+		&lt;/div&gt;
+	</code>
+</pre>
+
+	<h3>css</h3>
+<pre>
+	<code>
+		#parent-2 {
+			display: table;
+			height: 130px;
+			width: 140px;
+		}
+		#child-2 {
+			display: table-cell;
+			vertical-align: middle;
+			text-align: center;
+		}
+	</code>
+</pre>
+	<div id="parent-2" class="parent">
+		<div id="child-2">
+			Align-Content Here
+		</div>
+	</div>
+</div>
+
+<div id="method-3">
+	<h1>方法3: 绝对定位 + 负外边距 (Absolute Positioning and Negative Margin)</h1>
+	<h2>html</h2>
+<pre>
+	<code>
+		&lt;div id="parent-3"&gt;
+			&lt;div id="child-3"&gt;&lt;/div&gt;
+		&lt;/div&gt;
+	</code>
+</pre>
+	<h2>css</h2>
+<pre>
+	<code>
+		#parent-3{
+			position: relative;
+			width: 200px;
+			height:200px;
+		}
+		#child-3 {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width:50%;
+			height: 30%;
+			margin: -15% 0 0 -25%;
+		}
+	</code>
+</pre>
+	<div id="parent-3">
+		<div id="child-3">
+		</div>
+	</div>
+</div>
+
+<div id="method-4">
+	<h1> 方法4: 绝对定位 + 拉伸 (Absolute Positioning and Stretching)</h1>
+	<h3>html</h3>
+<pre>
+	<code>
+		&lt;div id="parent-4"&gt;
+			&lt;div id="child-4"&gt;
+				Align-Content
+			&lt;/div&gt;
+		&lt;/div&gt;
+	</code>
+</pre>
+	<h3>CSS</h3>
+<pre>
+	<code>
+		#parent-4 {
+			position: relative;
+			height: 200px;
+			width: 200px;
+			background-color: #ccc;
+		}
+
+		#child-4 {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin:auto;
+
+		}
+	</code>
+</pre>
+
+	<div id="parent-4">
+		<div id="child-4">
+		</div>
+	</div>
+	<p>
+		<em><strong>IE7及以下不支持。</strong></em>
+	</p>
+</div>
+
+<div id="method-4">
+	
+</div>
+<input type="search">
+</body>
+</html>
