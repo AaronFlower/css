@@ -45,9 +45,81 @@
 		.horizontally-multiple-blocks .block-tilt{
 			width: 100px;
 			height: 30px;
-			background: hsla(0, 16%, 100%, 0.9);
+			background: hsla(180, 26%, 96%, 0.9);
 			border: 1px solid rgba(0, 0, 0, 0.2);
 			margin: 20px;
+		}
+
+		/**
+		 * 单选元素垂直居中。
+		 */
+		/*使用 padding*/
+		.inline-vertical-padding {
+			height: 10px;
+			padding: 50px;
+			text-align: center;
+		}
+		.inline-vertical-padding a {
+			text-decoration: none;
+			padding: 30px;
+			background: hsla(180, 26%, 96%, 0.9);
+		}
+		/*使用 line-height 与 height*/
+		.inline-vertical-line-height {
+			height: 120px;
+		}
+		.inline-vertical-line-height div {
+			background: hsla(180, 26%, 96%, 0.9);
+			height: 80px;
+			line-height: 80px;
+			margin-top: 20px;
+		}
+
+		/**
+		 * 多行元素垂直居中。
+		 */
+		/* 利用 table-cell 来完成*/
+		.table-cell-layout div {
+			display: table;
+			height: 120px;
+			background: hsla(180, 26%, 96%, 0.9);
+			margin: 15px;
+		}
+		.table-cell-layout div p {
+			display: table-cell;
+			vertical-align: middle;
+		}
+		/* 利用 flexbox 来完成 */
+		.flexbox-layout div{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+
+			height: 120px;
+			width: 240px;
+			background: hsla(180, 26%, 96%, 0.9);
+			margin: auto;
+			margin-top: 15px;
+		}
+		/* 利用伪元素 */
+		.ghost-center {
+			width: 240px;
+			margin: 40px auto;
+			background: hsla(180, 26%, 96%, 0.9);
+
+			position: relative;
+		}
+
+		.ghost-center::before {
+			content: " ";
+			display: inline-block;
+			height: 100%;
+			width: 10%;
+			background: red;
+			vertical-align: middle;
+		}
+		.ghost-center p {
+			display: inline-block;
 		}
 	</style>
 </head>
@@ -84,5 +156,46 @@
 		<div class="block-tilt">Block Two</div>
 		<div class="block-tilt">Block Three</div>
 	</div>
+
+	<h2>Vertically Centering</h2>
+	<h3>inline or inline-elements</h3>
+	<h3>Is it single line?</h3>
+	<p>1. 对于单行 inline 元素，可以使 padding-top/padding-bottom 相同来完成。</p>
+	<div class="container inline-vertical-padding">
+		<a href="#0">We</a>
+		<a href="#0">are</a>
+		<a href="#0">Centered</a>
+		<a href="#0">Bits of Text</a>
+	</div>
+	<p>2. 如果无法使用 padding, 我们可以使用 line-height 与 height 相等来完成。</p>
+	<div class="container inline-vertical-line-height">
+		<div>
+			I'm a vertical centered line by the same value of line-height and height.
+		</div>
+	</div>
+	<h3>Is it multiple lines?</h3>
+	<p>同样，也可使用 padding 来完成。但是如果 padding 不适用的话，我们可以使用下面几种方法：</p>
+	<p>1. 使用 table-cell 的 vertial-align 来解决。</p>
+	<div class="container table-cell-layout">
+		<div>
+			<p>
+				I'm vertically centered multiple lines of text in a CSS-created table layout.
+			</p>
+		</div>
+	</div>
+	<p>2. 使用 flexbox 来完成。</p>
+	<div class="container flexbox-layout">
+		<div>
+			<p>I'm vertically centered multiple lines of text by <em>flexbox</em> layout.</p>
+		</div>
+	</div>
+	<p>3. 如果 padding, table-cell, flexbox 都不适用，那么可以使用 ghost pseudo-element 来完成。</p>
+	<em>表示并没有看明白这种方法。</em>
+	<div class="container">
+		<div class="ghost-center">
+			<p>I'm vertically centered multiple lines of text by ghost pseudo-element.</p>
+		</div>
+	</div>
+
 </body>
 </html>

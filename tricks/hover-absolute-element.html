@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hover Absolute Element</title>
+	<style>
+		body {
+			margin: auto;
+			width: 60%;
+		}
+		.image-container {
+			position: relative;
+		}
+		.image-container img {
+			position: absolute;
+			display: none;
+		}
+		.show:hover ~ img {
+			display: inline-block;
+			top: 20px;
+		}
+		.keep-in-state .image-container:hover img{
+			display: inline-block;
+			top: 20px;
+			left: 10px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<h3>Can't keep image in hover state</h3>
+	<p>Hover 到 show 按钮上显示图片，但是从按钮上到图片上，图片会消失。</p>
+	<div class="container">
+		<div class="image-container">
+			<button class="show">Show</button>
+			<img src="../images/benz.jpeg" alt="">
+		</div>
+	</div>
+	<p>为了让图片 hover 时也保持状态，将 hover 的状态保持到父级DOM上。</p>
+	<div class="container keep-in-state">
+		<div class="image-container">
+			<button>Show</button>
+			<img src="../images/benz.jpeg" alt="">
+		</div>
+	</div>
+</body>
+</html>
