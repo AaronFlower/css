@@ -4,6 +4,19 @@
 	<meta charset="UTF-8">
 	<title>Css3 Backgrounds And Border</title>
 	<style>
+		/**
+		 * reset
+		 */
+		body {
+			counter-reset: h3;
+		}
+		h3:before {
+			counter-increment: h3;
+			content: counter(h3) ". ";
+		}
+		/**
+		 * init contianer
+		 */
 		.container {
 			display: flex;
 			flex-direction: column;
@@ -30,9 +43,74 @@
 		 * Layering multiple background images;
 		 */
 		.multiple-bg-images {
-			background-image: url(../../images/embroidery.jpg);
+			height: 120px;
+			padding: 20px;
+			background-image:  url(../../images/icon-view-hover.png), url(../../images/linegradient.png);
 			background-origin: border-box;
-			background-position: left;
+			background-position: left, right bottom;
+			background-repeat: repeat-x,no-repeat;
+			background-color: #58a;
+			background-clip: content-box;
+			color: cyan;
+		}
+		/**
+		 * background-attachment 
+		 */
+		.bg-attachment {
+			height: 80px;
+			overflow-x: auto;
+			background-color: #58a;
+			background-image: url(../../images/benz.jpeg);
+			background-attachment: fixed;
+		}
+
+		/*
+			background-size
+		 */
+		.images {
+			width: 360px;
+			height: 400px;
+		}
+		.images img.initial {
+			width: 297px;
+			height: 97px;
+		}
+		.images img.contain-scale {
+			width: 100px;
+			height: 32.65px; /* 97/(297/100) */
+		}
+		.images img.cover-scale {
+			width: 245px; /* 297/(97/80) */
+			height: 80px;
+		}
+		.size-container {
+			background-color: coral;
+			background-image: url(../../images/linegradient.png);
+			background-clip: content-box;
+			background-origin: content-box;
+			background-repeat: no-repeat;
+			color: cyan;
+			font-size: 10px;
+		}
+		.initial-image {
+			width: 297px;
+			height: 97px;
+		}
+
+		.contain-scale-image {
+			width: 100px;
+			height: 80px;
+			background-size: contain;
+		}
+		.cover-scale-image {
+			width: 100px;
+			height: 80px;
+			background-size: cover;
+		}
+		.auto-scale-image {
+			width: 100px;
+			height: 80px;
+			background-size: auto;
 		}
 	</style>
 </head>
@@ -61,7 +139,32 @@
 		多个背景图片的展示顺序是：第一个图片最靠近用户，即是最上层，后面依次在下面。如果有 background-color 背景色的话，那么将会是在所有 background-images 的下面。
 	</p>
 	<div class="container multiple-bg-images">
-		
+		Kidding
+	</div>
+	<h3>background-attachment</h3>
+	<div class="container bg-attachment">
+		If background images are specified, this property specifies whether they are fixed with regard to the viewport (‘fixed’) or scroll along with the element (‘scroll’) or its contents (‘local’). The property's value is given as a comma-separated list of <attachment> keywords where
+	</div>
+	<h3>background-size</h3>
+	<div class="container images">
+		<p>原始图片</p>
+		<img class="initial" src="../../images/linegradient.png" alt="">
+		<p>contian 缩放，按最大的缩放因子缩放，使得缩放后的图片，可以全部放入。</p>
+		<img class="contain-scale" src="../../images/linegradient.png" alt="">
+		<p>cover 缩放，按最小因子缩放，缩放后的图片，可覆盖到所有背景。</p>
+		<img class="cover-scale" src="../../images/linegradient.png" alt="">
+	</div>
+	<div class="container size-container initial-image">
+		背景图片原始尺寸 297 x 97
+	</div>
+	<div class="container size-container contain-scale-image">
+		将背景图片等比缩放至 100 * 80，按最大缩放因子 contain 包含在内. 
+	</div>
+	<div class="container size-container cover-scale-image">
+		将背景图片等比缩放至 100 * 80，按最小缩放因子 cover 覆盖。
+	</div>	
+	<div class="container size-container auto-scale-image">
+		将背景图片等比缩放至 100 * 80，auto。
 	</div>
 </body>
 </html>
