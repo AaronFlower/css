@@ -4,36 +4,53 @@
 	<meta charset="UTF-8">
 	<title>Image Magnifier</title>
 	<style>
+		body {
+			margin: auto;
+			width: 80%;
+		}
 		.origin-container	{
 			width: 220px;
 			height: 160px;
 			border: 1px solid #ccc;
 			text-align: center;
-			line-height: 160px;
 			cursor: pointer;
+			display: table-cell;
+			vertical-align: middle;
 		}
 		.origin-container img{
 			max-width: 210px;
 			max-height: 150px;
 			margin-top: 10px;
 		}
-
+		
 		.zoom-container {
-			background: rgba(50, 3, 32, 0.3);
-			width: 1280px;
-			height: 854px;
-			position: relative;
+			max-width: 360px;
+			max-height: 320px;
+			width: 360px;
+			height: 320px;
+			display: table-cell;
+			vertical-align: middle;
+			text-align: center;
+			border:  1px dashed #ccc;
 		}
-		.zoom-container .cursor{
+		.zoom-container .lens {
 			background: rgba(90,90,90,.2);
-			width: 320px;
-			height: 210px;
-			position: absolute;
 			top: 0;
 			left: 0;
 			border: 1px solid red;
 			background: url("../images/benz-02.jpg");
 			background-repeat: no-repeat;
+			width: 320px;
+			height: 220px;
+			display: inline-block;
+		}
+
+		.btn-group {
+			display: inline-block;
+		}
+		.btn-group ul {
+			list-style-type: none;
+			padding-left: 0;
 		}
 	</style>
 
@@ -43,23 +60,33 @@
 		<div class="origin-container">
 			<img class="zoom-img" src="../images/benz-02.jpg" data-zoom-image-src="../images/benz-02.jpg">
 		</div>
+		<div class="btn-group">
+			<ul>
+				<li><button id="rotate-btn">Rotate</button></li>
+				<li><button id="zoom-out-btn">+</button></li>
+				<li><button id="zoom-in-btn">-</button></li>
+			</ul>
+		</div>
 		<div class="zoom-container">
-			<div class="cursor"></div>
+			<div class="lens"></div>
 		</div>
 	</div>
 	<script>
 		$origin = document.querySelector('.zoom-img')
-		$cursor = document.querySelector('.cursor')
+		$lens = document.querySelector('.lens')
+
+		originMaxHeight = 150
+		originMaxWidth = 210
 		zoomImgHeight = 854
 		zoomImgWidth = 1280
-		lensHeight = 210
+		lensHeight = 220
 		lensWidth = 320
+		let rotateDeg = 0
 		$origin.addEventListener('click', function (event) {
 			let rect = $origin.getBoundingClientRect()
 			let {left, top} = rect
 			let offsetLeft = (event.clientX - left) * 6
 			let offsetTop = (event.clientY- top) * 6
-			console.log($cursor.style, offsetLeft, offsetTop)
 			offsetLeft -= lensWidth/2
 			offsetTop -= lensHeight/2
 			if (offsetLeft < 0) {
@@ -75,10 +102,30 @@
 				offsetTop = zoomImgHeight - lensHeight
 			}
 
-			// $cursor.style.top = `${offsetTop}px`
-			// $cursor.style.left = `${offsetLeft}px`
+			$lens.style.backgroundPosition = ` -${offsetLeft}px -${offsetTop}px `
+		})
+		/**
+		 * rotate
+		 */
+		$rotateBtn = document.getElementById('rotate-btn')
+		$rotateBtn.addEventListener('click', function () {
+			rotateDeg = (rotateDeg + 90) % 360
+			if (rotateDeg % 180 === 90) {
+				$origin.style.maxHeight = `${originMaxWidth}px`
+				$origin.style.maxWidth = `${originMaxHeight}px`
 
-			$cursor.style.backgroundPosition = ` -${offsetLeft}px -${offsetTop}px `
+				$lens.style.height = `${lensWidth}px`
+				$lens.style.width = `${lensHeight}px`
+			} else {
+				$origin.style.maxHeight = `${originMaxHeight}px`
+				$origin.style.maxWidth = `${originMaxWidth}px`
+
+				$lens.style.height = `${lensHeight}px`
+				$lens.style.width = `${lensWidth}px`
+			}
+			$origin.style.transform = `rotate(${rotateDeg}deg)`
+			$lens.style.transform = `rotate(${rotateDeg}deg)`
+			// $zoomContainer.style.transform = `rotate(${rotateDeg}deg)`
 		})
 	</script>
 </body>
