@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Image Magnifier</title>
+	<style>
+		.origin-container	{
+			width: 220px;
+			height: 160px;
+			border: 1px solid #ccc;
+			text-align: center;
+			line-height: 160px;
+			cursor: pointer;
+		}
+		.origin-container img{
+			max-width: 210px;
+			max-height: 150px;
+			margin-top: 10px;
+		}
+	</style>
+
+</head>
+<body>
+	<div class="container">
+		<div class="origin-container">
+			<img class="zoom-img" src="../images/benz-02.jpg" data-zoom-image-src="../images/benz-02.jpg">
+		</div>
+	</div>
+	<script>
+		class ImageZoomer {
+			constructor (srcEle, options) {
+				if (srcEle.tagName !== 'IMG' || !srcEle.getAttribute('data-zoom-image-src')) {
+					console.log('Source Element is not an image element', srcEle)
+					return
+				}
+				this.srcEle = srcEle
+				this.options = Object.assign({
+					lens: {
+						width: 320,
+						height: 210 
+					}
+				}, options)
+				if (srcEle.complete) {
+					this.init()
+				} else {
+					srcEle.onload = this.init.bind(this)
+				}
+			} 
+
+			startZoom () {
+				this.zoomContainer.style = `
+					display: inline-block;
+					width: ${this.options.lens.width}px;
+					height: ${this.options.lens.height}px;
+					background-image: url(${this.zoomImageSrc});
+					background-repeat: none;
+				`
+				document.body.appendChild(this.zoomContainer)
+			}
+			init () {
+				let _self = this
+				new Promise(function (resolve, reject) {
+					_self.srcDimension = {
+						width: _self.srcEle.width,
+						height: _self.srcEle.height
+					}
+					_self.zoomImageSrc = _self.srcEle.getAttribute('data-zoom-image-src')
+					_self.zoomContainer = document.createElement('div')
+
+					let image = new Image()
+					image.onload = function () {
+						_self.zoomDimension = {
+							width: image.width,
+							height: image.height
+						}
+						_self.wScale = _self.zoomDimension.width / _self.srcDimension.width
+						_self.hScale = _self.zoomDimension.height / _self.srcDimension.height
+						resolve()
+					}
+					image.src = _self.zoomImageSrc
+					image.onerror = function () {
+						reject (new Error('can\'t load image'))
+					}
+
+					_self.zoomImageSrc = _self.srcEle.getAttribute('data-zoom-image-src')
+					_self.zoomContainer = document.createElement('div')
+				}).then(res => {
+					_self.initEvents()
+					_self.startZoom()
+				}, res => {
+					console.log(res)
+				})
+			}
+			initEvents () {
+				let _self = this
+				this.srcEle.addEventListener('mousemove', function (event) {
+
+					// console.log('mousemove', event)
+				})
+				this.srcEle.addEventListener('mouseleave', function (event) {
+					console.error('mouseleave', event)
+				})
+				this.srcEle.addEventListener('click', function () {
+					console.log('click', event)
+					let rect = _self.srcEle.getBoundingClientRect()
+					let {left, top} = rect
+					let offsetX = event.clientX - left
+					let offsetY = event.clientY - top
+					_self.freshPosition(offsetX, offsetY)
+					console.log(offsetX, offsetY)
+				})
+			}
+
+			freshPosition (offsetX, offsetY) {
+				let leftPos = this.wScale * offsetY
+				let topPos = this.hScale * offsetX
+				leftPos -= this.options.lens.width / 2
+				topPos -= this.options.lens.height / 2
+				leftPos = leftPos < 0 ? 0 :
+					 (leftPos + this.options.lens.width > this.zoomDimension.width) ? 
+					 	this.zoomDimension.width - this.options.lens.width :
+					 	leftPos
+				topPos = topPos < 0 ?
+								0 :
+								(topPos + this.options.lens.height > this.zoomDimension.height) ?
+								this.zoomDimension.height - this.options.lens.height :
+								topPos
+
+				console.log(this.zoomContainer.style.backgroundPosition)
+				this.zoomContainer.style.backgroundPosition = `-${leftPos}px -${topPos}px`
+				console.log(this.zoomContainer.style.backgroundPosition)
+			}
+		}
+		let imageZoomer = new ImageZoomer(document.querySelector('.zoom-img'))
+	</script>
+</body>
+</html>

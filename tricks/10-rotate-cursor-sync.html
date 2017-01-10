@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Image Magnifier</title>
+	<style>
+		.origin-container	{
+			width: 220px;
+			height: 160px;
+			border: 1px solid #ccc;
+			text-align: center;
+			line-height: 160px;
+			cursor: pointer;
+		}
+		.origin-container img{
+			max-width: 210px;
+			max-height: 150px;
+			margin-top: 10px;
+			transform: rotate(90deg)
+		}
+
+		.zoom-container {
+			background: url("../images/benz-02.jpg");
+			width: 1280px;
+			height: 854px;
+			position: relative;
+			transform: rotate(90deg)
+		}
+		.zoom-container .cursor{
+			background: rgba(90,90,90,.2);
+			width: 320px;
+			height: 210px;
+			position: absolute;
+/*			top: 0;
+			left: 0;*/
+			border: 1px solid red;
+		}
+	</style>
+
+</head>
+<body>
+	<div class="container">
+		<div class="origin-container">
+			<img class="zoom-img" src="../images/benz-02.jpg" data-zoom-image-src="../images/benz-02.jpg">
+		</div>
+		<div class="zoom-container">
+			<div class="cursor"></div>
+		</div>
+	</div>
+	<script>
+		$origin = document.querySelector('.zoom-img')
+		$cursor = document.querySelector('.cursor')
+		// zoomImgHeight = 854
+		// zoomImgWidth = 1280
+		// lensHeight = 210
+		// lensWidth = 320		
+		zoomImgHeight = 1280
+		zoomImgWidth = 854
+		lensHeight = 320
+		lensWidth = 210
+		$origin.addEventListener('click', function (event) {
+			let rect = $origin.getBoundingClientRect()
+			let {left, top} = rect
+			let offsetLeft = (event.clientX - left) * 6
+			let offsetTop = (event.clientY- top) * 6
+			console.log($cursor.style.width, $cursor.style.height)
+			console.log('left:', left, 'top:', top)
+			console.log(event.clientX, event.clientY)
+			offsetLeft -= lensWidth/2
+			offsetTop -= lensHeight/2
+			console.log('offsetLeft:', offsetLeft, 'offsetTop:', offsetTop)
+			if (offsetLeft < 0) {
+				offsetLeft = 0
+			}
+			if (offsetLeft + lensWidth/2 > zoomImgWidth) {
+				offsetLeft = zoomImgWidth - lensWidth
+			}
+			if (offsetTop < 0) {
+				offsetTop = 0
+			}
+			if (offsetTop + lensHeight/2 > zoomImgHeight) {
+				offsetTop = zoomImgHeight - lensHeight
+			}
+			// rotate 90
+			$cursor.style.left = `${offsetTop}px`
+			$cursor.style.bottom = `${offsetLeft}px`
+		})
+	</script>
+</body>
+</html>
