@@ -1,0 +1,24 @@
+{
+  "name": "css-tutorial",
+  "version": "1.0.0",
+  "description": "CSS-Learning tutorial",
+  "main": "services.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "node services.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AaronFlower/css.git"
+  },
+  "author": "AaronFlower",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AaronFlower/css/issues"
+  },
+  "homepage": "https://github.com/AaronFlower/css#readme",
+  "devDependencies": {
+    "express": "^4.15.2",
+    "serve-index": "^1.8.0"
+  }
+}
