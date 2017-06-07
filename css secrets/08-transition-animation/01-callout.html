@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Callout</title>
+	<style>
+		body {
+			width: 60%;
+			margin: auto;
+			font: 200%/1.6 Baskerville; /* font-size/line-height family */
+		}
+		input {
+			font: inherit;
+			display: block;
+			padding: 0 .4em;
+			width: 20em;
+		}
+		.container {
+			margin: 30px;
+		}
+		.callout {
+			position: absolute;
+			background: #fed;
+			max-width: 14em;
+			padding: .6em .8em;
+			border-radius: .3em;
+			margin: .3em 0 0 -.2em;
+			border: 1px solid rgba(0,0,0, .3); /* border 模糊 */
+			 /* box-shadow: offsest-x offset-y blur-radius color; */
+			box-shadow: 0.06em 0.2em 0.6em rgba(0, 0, 0, .2);
+			font-size: 75%;
+		}
+		/** 三角形 */
+		.callout:before {
+			content: '';
+			position: absolute;
+			background: inherit;
+			border: inherit;
+			padding: .35em;
+			transform: rotate(45deg);
+			border-right: 0;
+			border-bottom: 0;
+			transform: rotate(45deg);
+			top: -.4em;
+			left: 1em;
+		}
+		/**
+		 input 没有获得焦点，并且 callout 也没有被 hover
+		 */
+		input:not(:focus) + .callout:not(:hover) {
+			transform: scale(0);
+			animation: 0.25s transform;
+		}
+		.callout {
+			transition: .5s cubic-bezier(.25,.1,.3,1.5) transform;
+			transform-origin: 1.4em -.4em;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<label>
+			Your username: <input type="text" value="aaron" />
+			<span class="callout">Only leftters, numbers, underscores (_) and hypens (-) allowed!</span>
+		</label>
+	</div>
+</body>
+</html>
