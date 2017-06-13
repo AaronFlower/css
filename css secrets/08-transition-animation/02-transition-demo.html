@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Transition Demo</title>
+	<style>
+		body {
+			width: 80%;
+			margin: auto;
+		}
+		.wrapper {
+			width: 300px;
+			height: 120px;
+			font-size: 1.5em;
+			border: 1px dashed #ccc;
+			transition: font-size 1s;
+		}
+		.wrapper:hover {
+			font-size: 5em;
+			transition: font-size .5s ease;
+		}
+		.demo-01 {
+			transition-timing-function: ease;
+			transition-duration: 3s;
+		}		
+		.demo-02 {
+			transition-timing-function: ease-in;
+			transition-duration: 3s;
+		}			
+		.demo-02:hover {
+			transition-timing-function: ease-in;
+			transition-duration: 3s;
+		}		
+		.demo-03 {
+			transition-timing-function: ease-out;
+			transition-duration: 3s;
+		}
+		.demo-03:hover {
+			transition-timing-function: ease-out;
+			transition-duration: 3s;
+		}
+
+		.demo-04 {
+			transition-timing-function: cubic-bezier(0.32, -0.24, 0.44, 1.1);
+			transition-duration: 3s;
+		}
+		.demo-04:hover {
+			transition-timing-function: cubic-bezier(0.32, -0.24, 0.44, 1.1);
+			transition-duration: 3s;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h2>ease</h2>
+		<div class="wrapper demo">
+			Font-size
+		</div>	
+		<h2>ease</h2>
+		<div class="wrapper demo-01">
+			Font-size
+		</div>		
+		<h2>ease-in</h2>
+		<div class="wrapper demo-02">
+			Font-size
+		</div>
+		<h2>ease-out</h2>		
+		<div class="wrapper demo-03">
+			Font-size
+		</div>		
+		<h2>cubic-bezier(0.32, -0.24, 0.44, 1.1)</h2>		
+		<div class="wrapper demo-04">
+			Font-size
+		</div>
+	</div>
+</body>
+</html>
